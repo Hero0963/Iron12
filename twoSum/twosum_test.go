@@ -22,13 +22,35 @@ func generateTestData() []testData {
 	return data
 }
 
-func TestTwoSum(t *testing.T) {
+func TestTwoSumMethod1(t *testing.T) {
 
 	data := generateTestData()
 
 	for _, v := range data {
 
-		actual := twoSum.TwoSum(v.nums, v.target)
+		actual := twoSum.TwoSumMethod1(v.nums, v.target)
+		expected := v.ans
+
+		sort.Ints(actual)
+		sort.Ints(expected)
+
+		if reflect.DeepEqual(expected, actual) {
+			t.Log(true)
+		} else {
+			t.Error("not equal!!")
+			t.Error("actual= ", actual)
+			t.Error("expected= ", expected)
+		}
+	}
+}
+
+func TestTwoSumMethod2(t *testing.T) {
+
+	data := generateTestData()
+
+	for _, v := range data {
+
+		actual := twoSum.TwoSumMethod2(v.nums, v.target)
 		expected := v.ans
 
 		sort.Ints(actual)
