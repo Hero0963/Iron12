@@ -19,10 +19,11 @@ func SearchMethod2(nums []int, target int) int {
 
 	head := 0
 	tail := len(nums) - 1
-	middle := (head + tail) / 2
+	middle := 0
 
 	for head <= tail {
-		middle = (head + tail) / 2
+		middle = head + (tail-head)/2
+		//middle = (head + tail) / 2
 
 		if nums[middle] == target {
 			return middle
