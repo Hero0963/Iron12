@@ -35,3 +35,33 @@ func SearchMethod2(nums []int, target int) int {
 
 	return -1
 }
+
+func SearchMethod3(nums []int, target int) int {
+	return helper(nums, target, 0, len(nums)-1)
+
+}
+
+func helper(nums []int, target int, head int, tail int) int {
+	if head >= tail {
+		if nums[head] == target {
+			return head
+		}
+		return -1
+	}
+	if head < 0 {
+		return -1
+	}
+	if tail == len(nums) {
+		return -1
+	}
+
+	mid := head + (tail-head)/2
+	switch {
+	case nums[mid] > target:
+		return helper(nums, target, head, mid-1)
+	case nums[mid] < target:
+		return helper(nums, target, mid+1, tail)
+	default:
+		return mid
+	}
+}
